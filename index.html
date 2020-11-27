@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Communication</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/darkly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">S. Nagra</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Communication</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Communication</h1>
+
+</div>
+
+
+<div id="population" class="section level1">
+<h1>Population</h1>
+<ul>
+<li>Males are 4x more likely to die by suicide and females make more attempts.</li>
+<li>LGBTQ increased risk related to stigma, discrimination, violence, harassment and family rejection
+<ul>
+<li>Older persons are also at in increased risk related to higher prevalence of depression, loneliness and isolation, role changes in retirement, death loved ones, lack of support services (William Osler Health System (WOHS), 2020)</li>
+</ul></li>
+</ul>
+<div id="risk-factors" class="section level2">
+<h2>Risk factors</h2>
+<ul>
+<li>Psychiatric diagnosis: depression, anxiety, addictions and substance use or loneliness
+<ul>
+<li>90% of individuals that end their lives thought suicide present with a psychiatric disorder, with eating disorders having the highest prevalence
+<ul>
+<li>those who present with depression, despair and ruminate hopelessness</li>
+<li>individuals that present with guilt, fear, failure or poor self- esteem</li>
+<li>high incident in those with new diagnosis of schizophrenia or first psychosis</li>
+</ul></li>
+</ul></li>
+<li>those with borderline personality disorder may present with self- mutilation tendencies</li>
+<li>increased risk with previous attempt</li>
+<li>Stresses
+<ul>
+<li>Recent Major loss (death, unemployed, divorce)</li>
+</ul></li>
+<li>Role change (Teens and Seniors)</li>
+<li>recent trauma</li>
+<li>unstable family environment or inadequate social supports<br />
+</li>
+<li>in the elderly population, it is not uncommon for somatic symptoms of pain to increase the week preceding attempt (RNAO, 2009)</li>
+<li>increased risk associated with history of family member/ friend attempt</li>
+<li>individuals who participate in self- injurious behaviors related to psychological distraction<br />
+</li>
+<li>Feelings of being humiliated or manipulated</li>
+<li>Is associated with impulsively and substance use</li>
+<li>History of physical, sexual or emotional abuse</li>
+<li>Difficulties with academic performance: actual and perceived</li>
+<li>After individuals are discharged from hospital, 40% of those that die by suicide pass away before their first follow up.
+<ul>
+<li>return to stressors outside the hospital without adequate support and insight</li>
+</ul></li>
+<li>unable to detect relapse due to inadequate supervision in the community<br />
+(WOHS, 2020)</li>
+</ul>
+<p>Warning signs similar to symptoms of depression:</p>
+<ul>
+<li>Sleeplessness/ sleepiness,</li>
+<li>Social withdrawal,</li>
+<li>loss of appetite,</li>
+<li>Anhedonia,</li>
+<li>and often a preoccupation with death or dying</li>
+</ul>
+<p>Individuals may present as:</p>
+<ul>
+<li>Impulsive or irritable</li>
+<li>risk taking (Sexual promiscuity, increased alcohol use, no longer attending school/ work, driving under the influence)</li>
+<li>May start to take action to prepare for death (give away possessions, make a will or withdraw insurance money) (WOHS, 2020)</li>
+</ul>
+<p><a href="https://learn.openingminds.ca/wp-content/uploads/2020/05/The-Mental-Health-Continuum.pdf">The-Mental-Health-Continuum.pdf (openingminds.ca)</a> (MHCC,2020)</p>
+<p>Mental health is a continuum with healthy individuals can find themselves experiencing distress, due to stressors) and those with psychiatric diagnosis, with appropriate coping mechanisms, can find themselves living healthy lives. This is important to note when fostering hope for individuals with suicidal ideation.</p>
+<p>In the model linked above, the distinction between reacting and injured phase is the persistence of symptoms, with invasive symptoms no longer functioning as an appropriate response to circumstance. Symptoms of injury include:</p>
+<ul>
+<li>Impairment in functioning (changes to ADLs / poor hygiene, poor quality work submitted, low energy, etc.)</li>
+<li>breakdown of relationships</li>
+<li>Symptoms more generalized, no longer present with specific stressors</li>
+<li>Transition into illness involves meeting criteria for psychiatric disorder (persistent impairment in functional ability, inability to maintain clear/ consistent thoughts and planning</li>
+</ul>
+</div>
+<div id="protective-factors" class="section level2">
+<h2>Protective factors</h2>
+<p>Protective factors are aspects of the person’s life that gives them reward, meaning or a sense of purpose (RNAO, 2020).</p>
+<div id="internal-factors" class="section level3">
+<h3>Internal factors</h3>
+<ul>
+<li>Feeling of social belonging</li>
+<li>Perception of connection and satisfaction with school and employment</li>
+<li>Peelings of self- worth and motivation</li>
+<li>Help- seeking behaviour</li>
+<li>Recognition of healthy life skills (Good decision making, coping strategies, impulse control and perseverance) (WOHS, 2020)</li>
+<li>Natural supports
+<ul>
+<li>support in the community (Family, friends, faith group, etc) as identified by the client. Ask if the client is in a safe relationship, if they find their relationships supportive. Do not make assumptions (MHCC, 2020)</li>
+</ul></li>
+</ul>
+</div>
+<div id="external-factors" class="section level3">
+<h3>External factors</h3>
+<ul>
+<li>Family cohesion and healthy relationships (Shared interest, bonding, emotional support)</li>
+<li>Responsibility for family and pets</li>
+<li>Access to resources in the community for mental health and substance use that the client perceives to be adequate</li>
+<li>Religious and community connections, cultures of support against suicide (WOHS, 2020)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="rnao-practice-recommendations" class="section level1">
+<h1>RNAO Practice Recommendations</h1>
+<div id="assessment" class="section level2">
+<h2>Assessment</h2>
+<p>“The nurse will take seriously all statements made by the client that indicate, directly or indirectly, a wish to die by suicide, and/or all available information that indicates a risk for suicide” (RNAO, 2009)</p>
+<p>When performing a risk assessment, involve the client, their relationships and medical history.</p>
+<p>Interview for suicidal ideation, plan and protective factors <a href="https://bpgmobile.rnao.ca/content/interview-questions-assessment-suicidal-ideation-and-plan">Interview Questions for Assessment of Suicidal Ideation and Plan | Nursing Best Practice Guidelines (rnao.ca)</a></p>
+<p>Signs include:</p>
+<p>Direct statements: “I am going to kill myself” Indirect Statements : I can’t take it anymore" Indirect expression (Behavioural) (Often sudden): End-of-life planning (arranging a will, giving belongings away, donating body to science, neglect for self- care and relationships) and obtaining lethal means (Storing medications, obtaining firearms)</p>
+<p>If suspected: ask! There is no evidence that asking a person directly about self- harm and suicide with increase their risk (RNAO, 2009)</p>
+<p>“Are you thinking about ending your life?” “Are you suicidal?” “Do you have a plan to take your own life?” “Do thoughts of death or suicide enter your mind?”</p>
+<div id="risk-assessment" class="section level3">
+<h3>Risk assessment</h3>
+<p>Incorporate professional judgment: incorporate assessment data with findings from family and friends to ensure accurate assessment, monitor for recent changes in behaviour and ensure the safety of the patient (WOHS, 2020)</p>
+<p>Ideation:</p>
+<ul>
+<li>assess for active plan/ intent</li>
+<li>Passive suicidal ideation: The patient wishes to no longer live, may wish something to occur, but has no plan or intent to harm themselves.</li>
+<li>Active suicidal ideation: patient has a plan or intention to kill themselves, these individuals are at a much greater risk</li>
+<li>Assess access to lethal means</li>
+<li>Frequency and duration of thoughts</li>
+<li>Protective factors: What brings their life meaning? What do they enjoy doing? Who are their social supports?</li>
+</ul>
+<p>Behaviour:</p>
+<p><em>History of attempt: Aborted attempt (Stopped themself) or interrupted attempt (By another individual) </em> Controllability: Has the patient aborted an attempt in the past? Do they have adequate/ fair/ poor impulse control? <em>Act: Have they participated in a dangerous/ risk taking behaviours that may have led to their death? (DUI, Overdose) </em> Taken action to acquire lethal means</p>
+<p>High risk:</p>
+<p>Need of admission with persistent ideation and planning</p>
+<ul>
+<li>Experience of command hallucinations</li>
+<li>Psychiatric symptoms/ depression or increased irritation</li>
+<li>Recent discharge</li>
+<li>If in the community, reach out to crisis mobile team or police: In peel the Mobile crisis rapid response team is dispatched through emergency services (911)</li>
+<li>Amission: assess medical stability, constant observation, belonging search, minimum restraint policy</li>
+</ul>
+<p>Low risk:</p>
+<ul>
+<li>Passive ideation: thought of death with no plan, intent or behaviour</li>
+<li>Modifiable risk factors: Specific symptoms, psychosocial stressors and inadequate support</li>
+<li>Strong protective factors</li>
+<li>require outpatient referral, symptom reduction and access to support in the community (Crisis line, Community mental health programs) (WOHS, 2020)</li>
+</ul>
+</div>
+<div id="mental-health-forms" class="section level3">
+<h3>Mental Health Forms</h3>
+</div>
+<div id="documentation-communication" class="section level3">
+<h3>Documentation/ Communication</h3>
+<p>Every suicide assessment should be documented in a timely manner and include follow-up with appropriate resources and during TOA (RNAO,2020; WOHS, 2020)</p>
+<div id="toa" class="section level4">
+<h4>TOA</h4>
+<p>Important components at my placement:</p>
+<p>Patient Room Form</p>
+<p>Ask: Do you know this patient?</p>
+<p>Yes:</p>
+<ul>
+<li>provide update: current presentation, client concerns, changes in behaviour, risk assessment, current suicidal/ homicidal ideation</li>
+</ul>
+<p>No:</p>
+<ul>
+<li>Diagnosis and previous admissions</li>
+<li>Events leading to admission<br />
+</li>
+<li>Mental status summary:</li>
+<li>Mood/ affect</li>
+<li>Behaviour during interactions + compliance + need for encouragement?</li>
+<li>thoughts and perception</li>
+<li>Suicidal/ homicidal ideation</li>
+<li>Comment on any safety/ management concerns (Irritation/ anxiety) and strategies for de-escalation/ redirection (Coloring, topics for redirection, PRN)</li>
+<li>Communicate any of the patients concerns</li>
+<li>Health teaching provided/ limits in place</li>
+<li>Ongoing/ pending assessment or procedures: ECT, ortho consult, Epival bloodwork, etc.</li>
+</ul>
+<p>Meet criteria for eight components of transitional care (Naylor et al, 2017)</p>
+<p>SBARR</p>
+<p><a href="https://youtu.be/LNnr5tFkN6g?t=235">The SBAR approach to communication</a></p>
+<p><a href="https://youtu.be/TJQxG8kTS8Q?t=199">Patient Handover (SBARR)</a></p>
+<p>Concise handoff or information to other professionals in the healthcare team:</p>
+<p>Situation: immediate/ relevant patient information, Patient (Subjective + Objective data)</p>
+<p>Background: Patient History</p>
+<p>Assessment: Nursing assessment</p>
+<p>Recommendation: What outcome/ action does the does the speaker believe needs to happen</p>
+<p>Response feedback: Do you have any questions? Verify understanding</p>
+<p>Example:</p>
+<p>Hi Dr._, regarding _ your patient in __R, 50 years old with a history of schizophrenia. He decompensated in the community and was admitted from home by his 2 adult daughters. He is experiencing paranoid delusions regarding the police and is irritable. For safety, should the order for chemical restraints be renewed?</p>
+<p>Thank you, is there any other information you need from me?</p>
+</div>
+</div>
+</div>
+<div id="therapeutic-communication" class="section level2">
+<h2>Therapeutic communication</h2>
+<p>“The nurse works toward establishing a therapeutic relationship with clients at risk for suicidal ideation and behaviour” (RNAO, 2009)</p>
+<p>Therapeutic communication is essential for patient centered care and itself is protective against suicide when fostering feelings of hope, being heard, respected and connected (RNAO,2009).</p>
+<p>Therapeutic communication involves active listening skills, and positive body language that conveys genuineness and empathy in order to develop trust and engage a client to accurately assess and meet the client’s needs (RNAO, 2020).</p>
+<p>In mental health and addictions, agitation and perceived breach of trust from safety interventions, such as increased observation or contacting emergency services, are barriers to a therapeutic relationship (RNAO, 2020).</p>
+<p>Empathy vs. sympathy</p>
+<p><a href="https://www.youtube.com/watch?v=1Evwgu369Jw&amp;t=1s">Brené Brown on Empathy</a></p>
+<div id="communication-skills" class="section level4">
+<h4>Communication skills</h4>
+<p>Utilize open -ended questioning:</p>
+<ul>
+<li>How was your day today?</li>
+<li>What are you thinking/ feeling?</li>
+<li>Can you describe how you’re feeling right now? (Swan, 2017)</li>
+</ul>
+<p>Active listening skills</p>
+<p>Remain empathetic and objective</p>
+<p>Encouraging</p>
+<ul>
+<li>Convey interest: involves verbal and non verbal communication that invites expression</li>
+<li>Examples "</li>
+<li>Uh-huh." “Oh?” “When?” “Really?” “I see” “yes” (Swan, 2017)</li>
+<li>Make use of eye contact, nodding and mirroring
+<ul>
+<li>eye contact and nodding conveys understanding</li>
+<li>mirroring involves matching the speakers facial expression and conveys empathy (Swan, 2017)</li>
+</ul></li>
+</ul>
+<p>Use silence!</p>
+<ul>
+<li>Pausing and waiting for a response when speaking</li>
+<li>Helpful in mental health when clients may have delayed response times or need to process their emotions</li>
+<li>Conveys that the listener is thoughtful and attentive</li>
+</ul>
+<p>Clarifying</p>
+<ul>
+<li>Reflecting on the speakers words, works best in combination with “I” statements</li>
+<li>“I am hearing that_, is that accurate”</li>
+<li>“I am not sure I understand, can you_?”</li>
+</ul>
+<p>Emotional labeling</p>
+<ul>
+<li>The patient’s experience may be overwhelming and without identifying their emotions they cannot begin to regulate their response (Swan, 2017)</li>
+<li>Labening feeling using expressed words or direct observation: "I see_, I get the feeling that you’re _, is that right/ accurate?" Validate emotions and provide reassurance, do not minimize emotions. (Swan, 2017)</li>
+</ul>
+<p>Use “I” messages</p>
+<ul>
+<li>Lets the interviewer convey what they see/ feel in a non- defensive manner. Prevents the speaker from feeling attacked or accused. (Swan, 2017)</li>
+<li>I notice that you seem down lately, Would you like to talk about it?</li>
+<li>I feel uncomfortable when being spoken to that way. Please, don’t yell at me</li>
+<li>I would like to get a better understanding of _, can you tell me more about it Focus on conveying empathy during interactions</li>
+<li>“I see”, “I would like to confirm if i understand_.”</li>
+<li>Do not comment possibly or negatively, avoid assigning value to responses</li>
+<li>Reassure the patient that it is safe to be honest about how they feel.</li>
+</ul>
+</div>
+<div id="interpersonal-communication" class="section level4">
+<h4>Interpersonal Communication</h4>
+<p>One-to-one communication between the nurse and the client. Due to environmental and social context the message can sometimes be received differently than the speaker meant to convey. In these relationships it is vital that the meeting of communications need to be validated (Potter et al, 2017).</p>
+<p>Interpersonal variables: Factors that influence communication between the sender and receiver It is the nurses responsibility to seek out factors that aid in the effectiveness and sensitivity of communication (Potter et al, 2017).</p>
+<p>Environmental factors such as comfort, safety, privacy and distractions (noise) interfere with messages sent (Potter et al, 2017).</p>
+<p>Patient related factors such as pain, anxiety and medication side effects may also communicate. In the mental health setting the patient’s condition related to insights, delusions and hallucinations can be a barrier to effective communication.</p>
+<div id="verbal-communication" class="section level6">
+<h6>Verbal communication</h6>
+<p>spoken or written word, is unsuccessful if the sender and receiver cannot decode the words they use to communicate and cannot accurately convey a message to one another. The use of interpreters when there is a language barrier and avoiding the use of medical jargon is important when communicating with patients.</p>
+<ul>
+<li><p>Connotative meaning: one word can have several meanings. Nurses need to be purposeful with their language and avoid terms that may be misinterpreted (Potter et al, 2017).</p></li>
+<li><p>Communicate at an appropriate speed/ pace-&gt; speak slowly and enunciate clearly.</p></li>
+<li><p>Awkward pauses can be unsettling for patients and speaking deliberately slowly or rapidly can convey an unintended message</p></li>
+<li><p>Intonation and tone dramatically affect the meaning of a message. It’s also important in mental health to pay attention to the patient’s emotional state.</p></li>
+<li><p>Clarify: it’s important to practice simple and brief communication to avoid confusion.</p>
+<ul>
+<li>add on phrases such as “You know?” and “Right?” can be distracting</li>
+</ul></li>
+<li><p>Timing: Be appropriate with your communication. Ensure patients are alert, oriented and comfortable when providing health teaching.</p></li>
+</ul>
+</div>
+<div id="nonverbal-communication" class="section level6">
+<h6>Nonverbal Communication</h6>
+<p>Nonverbal communication is often culturally dependent and can determine if something like eye contact is therapeutic or not.</p>
+<p><em>Professional Appearance: includes physical characteristics, facial expression, manner of dress and grooming. </em>Facial Expression: related to affect. Important to be aware of your depression, furrowing your brow or frowning can be taken as a sign of judgment.</p>
+<p>Therapeutic Communication Techniques:</p>
+<p>Involve purposeful and specific responses to encourage the expression of feelings and ideas.</p>
+<ul>
+<li>Active Listening. Active listening means being attentive to what the patient is saying both verbally and nonverbally. It enhances trust and facilitates patient communication because it demonstrates acceptance and respect for the patient. Several nonverbal skills facilitate active listening</li>
+</ul>
+<p>SOLER</p>
+<ul>
+<li><p>S: Sit facing the patient. This posture indicates that you are there to listen and are interested in what the patient is saying.</p></li>
+<li><p>O: Keep an open posture (i.e., keep arms and legs uncrossed). This posture suggests that you are receptive (“open”) to what the patient has to say.</p></li>
+<li><p>A “closed” position may convey a defensive attitude, possibly invoking a similar response in the patient.</p></li>
+<li><p>L: Lean toward the patient.This posture indicates that you are involved and interested in the interaction.</p></li>
+<li><p>E: Establish and maintain intermittent eye contact. This behaviour conveys your involvement in and willingness to listen to what the patient is saying. Absence of eye contact or shifting of the eyes indicates that you are not interested in what the patient is saying.</p></li>
+<li><p>R: Relax. It is important to communicate a sense of being relaxed and comfortable with the patient. Restlessness communicates a lack of interest and also conveys a sense of discomfort that may extend to the patient. Sharing Observations. Nurses make observations by commenting on how the patient looks, sounds, or acts. Stating observations often helps the patient communicate without the need for extension</p></li>
+<li><p>ask open ended question and state observations and ask for clarificaiton</p></li>
+<li><p>Empathy is the ability to convey understanding of another person’s reality based on the accurate perception of spoken word. Empathy is expressed when you explore the patient’s perception without judgment and is conveyed when you provide neutral statements to provide validation to the patient’s experience. (Potter et al, 2017)</p></li>
+<li><p>Sharing hope: Can instill hope and self- confidence by keeping communications positive, encourage goal- setting and aid in problem solving with the patient. Comment on positive aspects of the person’s behavior, performance and response. (Potter et al, 2017) “The nurse fosters hope with the suicidal client.” (RNAO, 2009)</p></li>
+<li><p>Hopelessness and feelings of inadequacy influence a person’s perception of their ability to improve their circumstances. A strong therapeutic relationship can improve self- worth and hope. (RNAO, 2009)</p></li>
+<li><p>Providing reassurance</p>
+<ul>
+<li>Validating a person’s experience “it’s ok to feel like this given the situation, there is treatment and support, there is help available” (MHCC, 2020)</li>
+<li>You can foster hope in the client by validating their feelings and helping them realize their circumstances are subject to change.</li>
+</ul></li>
+<li><p>Providing Information: empower patients to make informed decisions and encourage their involvement in their care. Informed decisions are associated with less anxiety and improve a patient’s sense of control.</p></li>
+<li><p>Paraphrase and Clarify: rephrase a patient’s response and confirm if this is the message they meant to convey, provides the opportunity to address miscommunication or convey understanding.</p></li>
+<li><p>Summarize: provide a concise review of the interaction and the results of the conversation (future action).</p></li>
+</ul>
+<p>Non therapeutic techniques</p>
+<ul>
+<li>Sympathy: sympathy is the subjective vision of another person’s viewpoint. Occurs when you make assumptions about the clients experience.</li>
+<li>Asking for explanations: Asking why questions and explaining why they believe a certain way. May influence a client to act defensively.</li>
+<li>approval/ disapproval: do not impose your personal beliefs or attitudes on a patient. Do not tell them what they “should” and “should not” do or what is “Not right”. Value judgements may hinder the therapeutic relationship. It’s important to avoid automatic and defensive responses.</li>
+<li>False reassurance/ changing the topic: Offering automatic responses not based on facts or strengths the client has identified can make a patient feel isolated and contribute to distress. Abruptly changing to topic will make a client feel unheard. More therapeutic to take the time and ask “What would be helpful at this time?” and other open ended questions.</li>
+<li>Asking personal questions when they are not relevant is not appropriate in professional communication (Potter et al, 2017)</li>
+</ul>
+</div>
+</div>
+<div id="survivors" class="section level4">
+<h4>Survivors</h4>
+<p>Family/ friends of individuals that have died by suicide struggle with their emotional reactiosn and are at an increased risk of suicidal ideation themselves due to shock of the sudden death of a loved one. (MHCC, 2020)</p>
+<p>They may feel:</p>
+<ul>
+<li>They may feel anger, betrayal, disconnected from or abandoned by their loved one.</li>
+<li>Experience guilt or feel an exaggerated responsibility for their loss</li>
+<li>that the suicide was malicous or a way to communicate with them</li>
+<li>may behave as death has not occured (WOHS, 2020) Cultural or religious practices against suicide may act as a barrier for communicaiton and may lead to isolation for the survivors that cannot alcholage the situuaiton and reach out for support. (MHCC, 2020) Concerns regarding stigma may lead to survivors withdrawing from social support for the fear of being judged by society.</li>
+</ul>
+<p>To aid families, implement the therapeutic communication strategies listed above: Listen non- judgmentally to their concerns and avoid cliche responses. Talk about the person who passed in a positive light. Offer information and resources available in the community and document difficult times (Holidays, anniversaries, birthdays) and arrange for support at these times.</p>
+</div>
+</div>
+<div id="stigmatizing-language" class="section level2">
+<h2>Stigmatizing language</h2>
+<p>“Minimize the feelings of shame, guilt and stigma that may be associated with suicidality, mental illness and addiction” (RNAO, 2009)</p>
+<p>Communication, even with the best intentions, can be hindered if someone feels judged. Important to foster respectful environments where individuals feel safe to discuss their experience.</p>
+<ul>
+<li>Use Person first language to avoid defining an individual by their illness.
+<ul>
+<li>Someone living with schizophrenia, not a schizophrenic</li>
+</ul></li>
+</ul>
+<div class="figure">
+<img src="img/Picture1.png" alt="" />
+<p class="caption">Examples of stigmatizing and respectful language</p>
+</div>
+<ul>
+<li>Be purposeful with your language</li>
+<li>Don’t assume someone with a diagnosis is “Suffering” from that diagnosis unless the client identifies as such. Element of sympathy, and is not therapeutic. (MHCC,2020)</li>
+<li>Ask if someone has used substances, or when the last time that was. Don’t ask how long they’ve been clean. Associated with a value judgment which implies they were dirty or somehow lesser when using substances. Therapeutic interactions express respect, tolerance and affirm the client’s self-worth (RNAO, 2009). These techniques help mitigate stigma and shame to combat isolation and help patients feel supported (MHCC,2020).</li>
+</ul>
+</div>
+<div id="reflection" class="section level2">
+<h2>Reflection</h2>
+<p>“Beware of your own negative attitudes, beliefs and behaviours, which may have negative impact on the client.” (RNAO, 2009)</p>
+<ul>
+<li>Reflection on your own values and judgment will help you make ethical decisions and act in accordance to the client’s goals.</li>
+</ul>
+</div>
+</div>
+<div id="cultural-competence" class="section level1">
+<h1>Cultural Competence</h1>
+<p>“The nurse provides care in keeping with the principles of cultural safety/cultural competence.” (RNAO, 2009) Culture may inflience how mental health, suicide and death are discussed. In cultures where suicide is a taboo, even though these are protective factors, can indice shame and isolation in survivors or even prevent those experiencing ideaiton from reaching for support. In order to communicate effectively with the patient regarding their values, it’s important that you use the communication skills listed above to help the individual feel safe and free of judgment. (MHCC, 2020)</p>
+<div id="safety" class="section level2">
+<h2>Safety</h2>
+<p>“The nurse assesses and manages factors that may impact the physical safety of both the client and the interdisciplinary team.” (RNAO,2009)</p>
+<ul>
+<li>Nurses need to ensure their own safety first. If needed dissingadge until adequate supports (Other team members, police or emergency services, code white) are available</li>
+<li>restrains
+<ul>
+<li>physical restraints aggravate mental conditions and fester feelings of loss of control in the client. (RNAO, 2009)</li>
+</ul></li>
+</ul>
+<p>Restraint policy</p>
+<p><a href="https://bpgmobile.rnao.ca/category/guidelines/promoting-safety-alternative-approaches-use-restraints">Promoting Safety: Alternative Approaches to the Use of Restraints | Nursing Best Practice Guidelines (rnao.ca)</a></p>
+<p><a href="https://bpgmobile.rnao.ca/content/potential-hazardous-item">Potential hazardous items</a></p>
+<p>“The nurse ensures that observation and therapeutic engagement reflects the client’s changing suicide risk.” Agency Care round policy:</p>
+<p><a href="https://drive.google.com/file/d/1D6fiSEpzZHmSDraq2mzctQaL72U1tF3h/view?usp=sharing">Observation Policy Mental Health and Addictions</a></p>
+<ul>
+<li>When performing observation it’s important to engage the client during assessment. Interaction during observation helped patients feel safer and cared for. Alternatively, distant or silent observations make patients feel frustrated and intruded upon. (RNAO,2009)</li>
+</ul>
+<p>Crisis intervention</p>
+<p><a href="https://drive.google.com/file/d/1D6fiSEpzZHmSDraq2mzctQaL72U1tF3h/view?usp=sharing">Observation Policy Mental Health and Addictions</a></p>
+<p><a href="https://rnao.ca/bpg/guidelines/crisis-intervention">Crisis Intervention for Adults Using a Trauma-Informed Approach: Initial Four Weeks of Management</a></p>
+<p><a href="https://bpgmobile.rnao.ca/guideline-content/12">Crisis Intervention | Nursing Best Practice Guidelines (rnao.ca)</a></p>
+<p>De-escalation</p>
+<p><a href="https://bpgmobile.rnao.ca/node/849">De-escalation Tips | Nursing Best Practice Guidelines (rnao.ca)</a></p>
+<p><a href="https://rnao.ca/bpg/guidelines/preventing-violence-harassment-and-bullying-against-health-workers">Preventing Violence, Harassment and Bullying Against Health Workers</a></p>
+<p><a href="https://bpgmobile.rnao.ca/sites/default/files/Appendix%20R%20Personal%20De-escalation%20Plan.pdf">Personal De-escalation Plan</a></p>
+<p><a href="https://bpgmobile.rnao.ca/sites/default/files/Appendix%20J%20Safewards%20Model.pdf">Safewards Model (rnao.ca)</a></p>
+<p><a href="https://bpgmobile.rnao.ca/sites/default/files/Appendix%20G%20STAMPEDAR%20Framework.pdf">STAMPEDAR Framework</a></p>
+<p>Speaking to individuals experiencing delusions</p>
+<p><a href="https://www.health.nsw.gov.au/mentalhealth/psychosocial/strategies/Pages/communicating-psychosis.aspx">How can I communicate with someone experiencing psychosis? - Practical strategies and tips for effective support (nsw.gov.au)</a></p>
+<p><a href="https://www.bcss.org/support/how-do-i-get-help-for-my-loved-one/steps-working-delusions/">Steps for Working With Delusions - BC Schizophrenia Society (bcss.org)</a></p>
+<p>Alternative risk assessment</p>
+<p><a href="https://www.apna.org/m/pages.cfm?pageid=5684">Suicide Assessment and Management Competencies for Nurse</a></p>
+</div>
+</div>
+<div id="interventions-and-strategies" class="section level1">
+<h1>Interventions and Strategies</h1>
+<div id="self--worth-strategies" class="section level2">
+<h2>Self- worth strategies</h2>
+<p>Possible Strategies for Affirming Client’s Self-Worth | Nursing Best Practice Guidelines (rnao.ca) “The nurse works collaboratively with the client to understand his/her perspective and meet his/her needs.” (RNAO, 2009) Utilize effective communication techniques, so the client can convey their perspective and feel understood and supported.</p>
+</div>
+<div id="no-suicide-contracts" class="section level2">
+<h2>No-suicide contracts</h2>
+<p>“The literature suggests that no-suicide contracts are frequently employed as assessment and/or management tools by health care professionals despite the lack of empirical evidence to support their use” (RNAO, 2009) These contracts should consist of an agreement within a probable time frame with a contingency plan. These should only be applied in context of the therapeutic relationship.</p>
+<p>Contracting for safety:</p>
+<p><a href="http://patientsafety.pa.gov/ADVISORIES/Pages/201306_82.aspx#:~:text=%E2%80%9CContracts%20for%20safety%2C%E2%80%9D%20%E2%80%9C,written%20but%20are%20sometimes%20verbal.&amp;text=These%20terms%20are%20often%20used%20interchangeably%20by%20providers.">Contracting for Safety: A Misused Tool</a></p>
+</div>
+<div id="limit-setting" class="section level2">
+<h2>Limit setting</h2>
+<p><a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/c7bb94004903b7e6979af70e3d7ae4ad/MH+R%26S+Fact+Sheet+3+Effective+Limit+Setting.pdf?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-c7bb94004903b7e6979af70e3d7ae4ad-niRco1R">South Australia public health limit setting guidelines (sahealth.sa.gov.au)</a></p>
+</div>
+<div id="strength-based-problem-solving" class="section level2">
+<h2>Strength-based Problem solving</h2>
+<p>Strength based questioning and problem solving</p>
+<p><a href="https://drive.google.com/file/d/1EEiBGDxUgMdUAlhmjpMKXHIqbAD4XpbX/view?usp=sharing">Coping with problems by focusing on solutions</a></p>
+<p>“The nurse uses a mutual problem-solving (client nurse) approach to facilitate the client’s understanding of how they perceive his/her own problems and generate solutions.” (RNAO, 2009)</p>
+<ul>
+<li>Therapeutic to help the client identify stressors in their life and aid them in the development of alternative coping strategies. Clients may not understand the connection between their suicidal ideation and stressors (RNAO, 2009).</li>
+<li>Encouraging client involvement in generating their own goals and strategies increases their sense of mastery of the situation. Mastery is the person’s feeling of control after the forces that act on them</li>
+<li>Barriers to problem solving may be symptoms of confusion or experiencing difficulty thinking clearly due to increased stress response or other mental health symptoms (RNAO, 2009).</li>
+</ul>
+<p><img src="img/Picture2.png" alt="Problem solving approach to solution" /> <img src="img/Picture3.png" alt="Practice box" /> <img src="img/Picture4.png" alt="Practice box continued" /></p>
+</div>
+<div id="health-teaching" class="section level2">
+<h2>Health teaching</h2>
+<p>Deep breathing:</p>
+<p><a href="https://www.therapistaid.com/therapy-worksheet/deep-breathing-worksheet/anxiety/none">Deep Breathing (Worksheet) | Therapist Aid</a></p>
+<p>Sleep hygiene:</p>
+<p><a href="https://www.stjoes.ca/patients-visitors/patient-education/patient-education:-p-t/sleep-pdf">Sleep</a></p>
+<p>Medication:</p>
+<p><a href="https://www.stjoes.ca/patients-visitors/patient-education">Patient Education - St. Joseph’s Healthcare Hamilton (stjoes.ca)</a></p>
+<p><a href="https://www.stjoes.ca/patients-visitors/patient-education/patient-education:-u-z/valproate-sodium---medication-information-pdf">Medication Information - Valproate Sodium (stjoes.ca)</a></p>
+<p>Goal setting:</p>
+<p><a href="https://www.therapistaid.com/therapy-worksheets/goals/none">Goals Worksheets | Therapist Aid</a></p>
+<p>ECT:</p>
+<p>indicated for acutely suicidal patients in specific circumstances (Depression) (RNAO, 2020).</p>
+<p><a href="https://meridian.allenpress.com/mhc/article/5/5/212/127701/A-review-of-electroconvulsive-therapy-in">A review of electroconvulsive therapy in suicidality | Mental Health Clinician | Allen Press</a></p>
+<p><a href="https://www.cochrane.org/CD003593/DEPRESSN_electroconvulsive-therapy-ect-for-depression-in-elderly-people">Electroconvulsive therapy (ECT) for depression in elderly people | Cochrane</a></p>
+<p><a href="https://www.cochrane.org/CD011847/SCHIZ_electroconvulsive-therapy-treatment-resistant-schizophrenia">Electroconvulsive therapy for treatment-resistant schizophrenia | Cochrane</a></p>
+<p>Mindfulness interventions:</p>
+<p><a href="https://www.cadth.ca/sites/default/files/pdf/htis/june-2015/RC0669%20Mindfulness%20for%20PTSD%2C%20GAD%2C%20Depression%2C%20and%20Substance%20Abuse%20Final.pdf">EIDM worksheet</a></p>
+<p><a href="https://www.apa.org/monitor/2012/07-08/ce-corner">What are the benefits of mindfulness? (apa.org)</a></p>
+<p><a href="https://cmha.ca/documents/mindfulness">Mindfulness - CMHA National</a></p>
+<p><a href="https://journals.sagepub.com/doi/abs/10.1177/0020764020960776">The mindfulness trajectories of addressing suicidal behaviour: A systematic review - Saurabh Raj, Debasruti Ghosh, Sunil K Verma, Tushar Singh, 2020 (sagepub.com)</a></p>
+<p><a href="https://www.therapistaid.com/therapy-worksheet/coping-skills-anxiety">Coping Skills: Anxiety</a></p>
+<p><a href="https://www.mayoclinic.org/healthy-lifestyle/consumer-health/in-depth/mindfulness-exercises/art-20046356">Mindfulness exercises - Mayo Clinic</a></p>
+<p>Benefits of Cognitive behavioural therapy: important for addressing the psychosocial symptoms of borderline personality and schizophrenia.</p>
+<p><a href="https://www.camh.ca/en/health-info/mental-illness-and-addiction-index/cognitive-behavioural-therapy">Cognitive-behavioural therapy (CBT) | CAMH</a></p>
+<p><a href="https://www.camh.ca/en/health-info/mental-illness-and-addiction-index/dialectical-behaviour-therapy">Dialectical Behaviour Therapy (DBT) | CAMH</a></p>
+<p><a href="https://www.acpjournals.org/doi/full/10.7326/m19-0869">Treatments for the Prevention and Management of Suicide: A Systematic Review: Annals of Internal Medicine: Vol 171, No 5 (acpjournals.org)</a></p>
+<p>Complementary and alternative modalities: manage their suicidal behaviour related to depression, anxiety or a mental illness: herbal remedies, dietary supplements, massages/reflexology, aromatherapy, acupuncture, yoga, meditation and music (RNAO, 2002)</p>
+</div>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<p>RNAO 2009 Assessment and Care of Adults at Risk for Suicidal Ideation and Behaviour</p>
+<p>Components of Comprehensive and Effective Transitional Care (nih.gov)</p>
+<p>William Osler Health System. (2020). Module 1: Suicide Risk Understanding and Assessing</p>
+<p>Mental Health Commission of Canada (MHCC). (2020). Crisis response- Caring for others. Crisis Response – Caring for Others – Opening Minds Learning</p>
+<p>Components of Comprehensive and Effective Transitional Care (nih.gov)</p>
+<p>Swan, 2017 Mental Health Crises Intervention and Support for Patients <a href="https://drive.google.com/file/d/14gGsORDH4nv01nZVBsJI1Z5kJio1Hwd5/view?usp=sharing" class="uri">https://drive.google.com/file/d/14gGsORDH4nv01nZVBsJI1Z5kJio1Hwd5/view?usp=sharing</a></p>
+<p><a href="https://www.sahealth.sa.gov.au/wps/wcm/connect/c7bb94004903b7e6979af70e3d7ae4ad/MH+R%26S+Fact+Sheet+3+Effective+Limit+Setting.pdf?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-c7bb94004903b7e6979af70e3d7ae4ad-niRco1R" class="uri">https://www.sahealth.sa.gov.au/wps/wcm/connect/c7bb94004903b7e6979af70e3d7ae4ad/MH+R%26S+Fact+Sheet+3+Effective+Limit+Setting.pdf?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE-c7bb94004903b7e6979af70e3d7ae4ad-niRco1R</a></p>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
